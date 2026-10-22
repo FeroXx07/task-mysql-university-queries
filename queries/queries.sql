@@ -1,30 +1,92 @@
 -- 1. Retorna un llistat amb el primer cognom, segon cognom i el nom de tots els/les alumnes. El llistat haurà d'estar ordenat alfabèticament de menor a major pel primer cognom, segon cognom i nom.
-
+SELECT
+	pe.apellido1,
+    pe.apellido2,
+    pe.nombre
+FROM persona as pe
+ORDER BY pe.apellido1 ASC, pe.apellido2 ASC, pe.nombre ASC;
 
 -- 2. Esbrina el nom i els dos cognoms dels alumnes que no han donat d'alta el seu número de telèfon en la base de dades. (nombre, apellido1, apellido2)
-
+SELECT
+	pe.apellido1,
+    pe.apellido2,
+    pe.nombre
+FROM persona as pe
+WHERE pe.telefono IS NULL;
 
 -- 3. Retorna el llistat dels alumnes que van néixer en 1999. (id, nombre, apellido1, apellido2, fecha_nacimiento)
-
+SELECT
+	pe.id,
+	pe.nombre,
+	pe.apellido1,
+    pe.apellido2,
+    pe.fecha_nacimiento
+FROM persona as pe
+WHERE YEAR(pe.fecha_nacimiento) = 1999;
 
 
 -- 4. Retorna el llistat de professors/es que no han donat d'alta el seu número de telèfon en la base de dades i a més el seu NIF acaba en K. (nombre, apellido1, apellido2, nif)
-
+SELECT
+	pe.id,
+	pe.nombre,
+	pe.apellido1,
+    pe.apellido2,
+    pe.fecha_nacimiento
+FROM persona as pe
+WHERE YEAR(pe.fecha_nacimiento) = 1999;
 
 -- 5. Retorna el llistat de les assignatures que s'imparteixen en el primer quadrimestre, en el tercer curs del grau que té l'identificador 7. (id, nombre, cuatrimestre, curso, id_grado)
-
+SELECT
+	ag.id,
+    ag.nombre,
+    ag.cuatrimestre,
+    ag.curso,
+    g.id
+FROM grado as g
+JOIN asignatura as ag
+	ON (g.id = ag.id_grado)
+WHERE g.id = 7 AND ag.cuatrimestre = 1;
 
 -- 6. Retorna un llistat dels professors/es juntament amb el nom del departament al qual estan vinculats. El llistat ha de retornar quatre columnes, primer cognom, segon cognom, nom i nom del departament. El resultat estarà ordenat alfabèticament de menor a major pels cognoms i el nom. (apellido1, apellido2, nombre, departamento)
-
+SELECT 
+	pe.apellido1,
+    pe.apellido2,
+    pe.nombre,
+    de.nombre
+FROM persona as pe
+INNER JOIN profesor as po ON (pe.id = po.id_profesor)
+INNER JOIN departamento as de ON (de.id = po.id_departamento)
+ORDER BY pe.apellido1 ASC, pe.apellido2 ASC, pe.nombre ASC, de.nombre ASC;
 
 -- 7. Retorna un llistat amb el nom de les assignatures, any d'inici i any de fi del curs escolar de l'alumne/a amb NIF 26902806M. (nombre, anyo_inicio, anyo_fin)
-
+SELECT
+	ag.nombre,
+    ce.anyo_inicio,
+    ce.anyo_fin
+FROM asignatura as ag
+JOIN alumno_se_matricula_asignatura as ama ON (ag.id = ama.id_asignatura)
+JOIN curso_escolar as ce ON (ama.id_curso_escolar = ce.id)
+JOIN persona as pe ON (ama.id_alumno = pe.id)
+WHERE pe.nif = '26902806M';
 
 -- 8. Retorna un llistat amb el nom de tots els departaments que tenen professors/es que imparteixen alguna assignatura en el Grau en Enginyeria Informàtica (Pla 2015). (nombre)
-
+SELECT 
+	DISTINCT de.nombre
+FROM persona as pe
+INNER JOIN profesor as po ON (pe.id = po.id_profesor)
+INNER JOIN departamento as de ON (de.id = po.id_departamento)
+INNER JOIN asignatura as ag ON (ag.id_profesor = po.id_profesor)
+WHERE ag.id_grado = 4;
 
 -- 9. Retorna un llistat amb tots els alumnes que s'han matriculat en alguna assignatura durant el curs escolar 2018/2019. (nombre, apellido1, apellido2)
-
+SELECT DISTINCT 
+	pe.nombre,
+    pe.apellido1,
+    pe.apellido2
+FROM alumno_se_matricula_asignatura as ama
+JOIN curso_escolar as ce ON (ama.id_curso_escolar = ce.id)
+JOIN persona as pe ON (ama.id_alumno = pe.id)
+WHERE ce.anyo_inicio = 2018 AND ce.anyo_fin = 2019;
 
 -- Resol les 6 següents consultes utilitzant les clàusules LEFT JOIN i RIGHT JOIN.
 -- 10. Retorna un llistat amb els noms de tots els professors/es i els departaments que tenen vinculats. El llistat també ha de mostrar aquells professors/es que no tenen cap departament associat. El llistat ha de retornar quatre columnes, nom del departament, primer cognom, segon cognom i nom del professor/a. El resultat estarà ordenat alfabèticament de menor a major pel nom del departament, cognoms i el nom. (departamento, apellido1, apellido2, nombre)
