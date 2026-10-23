@@ -20,8 +20,7 @@ WHERE NOT EXISTS ( # row does not exist in subquery
     FROM profesor pr
     WHERE pr.id_profesor = pe.id
 ) 
-AND pe.telefono IS NULL
-ORDER BY pe.apellido1 ASC, pe.apellido2 ASC, pe.nombre ASC;
+AND pe.telefono IS NULL;
 
 -- 3. Retorna el llistat dels alumnes que van néixer en 1999. (id, nombre, apellido1, apellido2, fecha_nacimiento)
 SELECT
