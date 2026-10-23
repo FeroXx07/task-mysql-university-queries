@@ -11,9 +11,9 @@ ORDER BY pe.apellido1 ASC, pe.apellido2 ASC, pe.nombre ASC;
 
 -- 2. Esbrina el nom i els dos cognoms dels alumnes que no han donat d'alta el seu número de telèfon en la base de dades. (nombre, apellido1, apellido2)
 SELECT 
+    pe.nombre,
 	pe.apellido1,
-    pe.apellido2,
-    pe.nombre
+    pe.apellido2
 FROM persona pe
 WHERE NOT EXISTS ( # row does not exist in subquery
     SELECT 1 # since we dont need any data, 1 placholder
@@ -38,7 +38,7 @@ SELECT
 	pe.nombre,
 	pe.apellido1,
     pe.apellido2,
-    pe.NIF
+    pe.NIF as 'nif'
 FROM profesor as po
 JOIN persona as pe
 	ON (po.id_profesor = pe.id)
