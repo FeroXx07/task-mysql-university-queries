@@ -50,11 +50,11 @@ SELECT
     ag.nombre,
     ag.cuatrimestre,
     ag.curso,
-    g.id
+    g.id as 'id_grado'
 FROM grado as g
 JOIN asignatura as ag
 	ON (g.id = ag.id_grado)
-WHERE g.id = 7 AND ag.cuatrimestre = 1;
+WHERE g.id = 7 AND ag.curso = 3 AND ag.cuatrimestre = 1;
 
 -- 6. Retorna un llistat dels professors/es juntament amb el nom del departament al qual estan vinculats. El llistat ha de retornar quatre columnes, primer cognom, segon cognom, nom i nom del departament. El resultat estarà ordenat alfabèticament de menor a major pels cognoms i el nom. (apellido1, apellido2, nombre, departamento)
 SELECT 
