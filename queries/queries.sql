@@ -144,8 +144,7 @@ WHERE po.id_profesor IS NULL;
 SELECT DISTINCT
     pe.apellido1,
     pe.apellido2,
-    pe.nombre,
-    ag.nombre
+    pe.nombre
 FROM persona as pe
 JOIN profesor as po
 	ON (pe.id = po.id_profesor)
@@ -233,7 +232,7 @@ ORDER BY COUNT(ag.id) DESC;
 -- 22. Retorna un llistat que mostri el nom dels graus i la suma del nombre total de crèdits que hi ha per a cada tipus d'assignatura. El resultat ha de tenir tres columnes: nom del grau, tipus d'assignatura i la suma dels crèdits de totes les assignatures que hi ha d'aquest tipus. (grau, tipus, total_creditos)
 SELECT 
 	g.nombre as 'grau',
-    ag.tipo as 'tipus',
+    ag.tipo as 'tipo',
     SUM(ag.creditos) as 'total_creditos'
 FROM grado as g
 JOIN asignatura as ag
