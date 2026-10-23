@@ -2,42 +2,12 @@
 
 
 ## 📈 Resumen
-✅ 4 correctas de 10 queries
+✅ 5 correctas de 10 queries
 
-## ❌ Query 1: Incorrecto
-```diff
---- 
-+++ 
-@@ -1,13 +1,25 @@
- apellido1 | apellido2 | nombre
- Domínguez | Guerrero | Antonio
-+Fahey | Considine | Antonio
- Gea | Ruiz | Sonia
- Gutiérrez | López | Juan
-+Hamill | Kozey | Manolo
- Heller | Pagac | Pedro
- Herman | Pacocha | Daniel
- Hernández | Martínez | Irene
- Herzog | Tremblay | Ramón
-+Kohler | Schoen | Alejandro
- Koss | Bayer | José
- Lakin | Yundt | Inma
-+Lemke | Rutherford | Cristina
-+Monahan | Murray | Micaela
-+Ramirez | Gea | Zoe
-+Ruecker | Upton | Guillermo
- Saez | Vega | Juan
- Sánchez | Pérez | Salvador
-+Schmidt | Fisher | David
-+Schowalter | Muller | Francesca
-+Spencer | Lakin | Esther
-+Stiedemann | Morissette | Alfredo
-+Streich | Hirthe | Carmen
- Strosin | Turcotte | Ismael
-```
+## ✅ Query 1: Correcto
 
-⏱ Tiempo: 0.45 ms
-🔍 No se usó ningún índice en esta consulta.
+⏱ Tiempo: 0.49 ms
+✅ Se usó índice(s) en la consulta: PRIMARY
 
 ---
 
@@ -45,28 +15,23 @@
 ```diff
 --- 
 +++ 
-@@ -1,3 +1,8 @@
+@@ -1,3 +1,3 @@
 -nombre | apellido1 | apellido2
 -Pedro | Heller | Pagac
 -Ismael | Strosin | Turcotte
 +apellido1 | apellido2 | nombre
 +Heller | Pagac | Pedro
 +Strosin | Turcotte | Ismael
-+Spencer | Lakin | Esther
-+Streich | Hirthe | Carmen
-+Fahey | Considine | Antonio
-+Ruecker | Upton | Guillermo
-+Schowalter | Muller | Francesca
 ```
 
-⏱ Tiempo: 0.30 ms
-🔍 No se usó ningún índice en esta consulta.
+⏱ Tiempo: 0.41 ms
+✅ Se usó índice(s) en la consulta: PRIMARY
 
 ---
 
 ## ✅ Query 3: Correcto
 
-⏱ Tiempo: 0.30 ms
+⏱ Tiempo: 0.29 ms
 🔍 No se usó ningún índice en esta consulta.
 
 ---
@@ -84,7 +49,7 @@
 +22.00 | Antonio | Domínguez | Guerrero | 1999-02-11
 ```
 
-⏱ Tiempo: 0.28 ms
+⏱ Tiempo: 0.32 ms
 🔍 No se usó ningún índice en esta consulta.
 
 ---
@@ -111,7 +76,7 @@
  74.00 | Metabolismo y biosíntesis de biomoléculas | 1.00 | 3.00 | 7.00
 ```
 
-⏱ Tiempo: 0.39 ms
+⏱ Tiempo: 0.40 ms
 ✅ Se usó índice(s) en la consulta: id_grado, PRIMARY
 
 ---
@@ -128,22 +93,22 @@
  Kohler | Schoen | Alejandro | Matemáticas
 ```
 
-⏱ Tiempo: 0.42 ms
-✅ Se usó índice(s) en la consulta: PRIMARY,id_departamento, PRIMARY
+⏱ Tiempo: 0.39 ms
+✅ Se usó índice(s) en la consulta: PRIMARY, PRIMARY,id_departamento
 
 ---
 
 ## ✅ Query 7: Correcto
 
-⏱ Tiempo: 0.57 ms
-✅ Se usó índice(s) en la consulta: PRIMARY,nif, PRIMARY,id_asignatura,id_curso_escolar, PRIMARY
+⏱ Tiempo: 0.53 ms
+✅ Se usó índice(s) en la consulta: PRIMARY,id_asignatura,id_curso_escolar, PRIMARY, PRIMARY,nif
 
 ---
 
 ## ✅ Query 8: Correcto
 
 ⏱ Tiempo: 0.40 ms
-✅ Se usó índice(s) en la consulta: PRIMARY,id_departamento, id_profesor,id_grado, PRIMARY
+✅ Se usó índice(s) en la consulta: id_profesor,id_grado, PRIMARY, PRIMARY,id_departamento
 
 ---
 
