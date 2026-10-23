@@ -6,7 +6,7 @@
 
 ## ✅ Query 1: Correcto
 
-⏱ Tiempo: 0.49 ms
+⏱ Tiempo: 0.43 ms
 ✅ Se usó índice(s) en la consulta: PRIMARY
 
 ---
@@ -24,14 +24,14 @@
 +Strosin | Turcotte | Ismael
 ```
 
-⏱ Tiempo: 0.41 ms
+⏱ Tiempo: 0.33 ms
 ✅ Se usó índice(s) en la consulta: PRIMARY
 
 ---
 
 ## ✅ Query 3: Correcto
 
-⏱ Tiempo: 0.29 ms
+⏱ Tiempo: 0.31 ms
 🔍 No se usó ningún índice en esta consulta.
 
 ---
@@ -49,7 +49,7 @@
 +22.00 | Antonio | Domínguez | Guerrero | 1999-02-11
 ```
 
-⏱ Tiempo: 0.32 ms
+⏱ Tiempo: 0.27 ms
 🔍 No se usó ningún índice en esta consulta.
 
 ---
@@ -76,7 +76,7 @@
  74.00 | Metabolismo y biosíntesis de biomoléculas | 1.00 | 3.00 | 7.00
 ```
 
-⏱ Tiempo: 0.40 ms
+⏱ Tiempo: 0.36 ms
 ✅ Se usó índice(s) en la consulta: id_grado, PRIMARY
 
 ---
@@ -93,29 +93,29 @@
  Kohler | Schoen | Alejandro | Matemáticas
 ```
 
-⏱ Tiempo: 0.39 ms
+⏱ Tiempo: 0.47 ms
 ✅ Se usó índice(s) en la consulta: PRIMARY, PRIMARY,id_departamento
 
 ---
 
 ## ✅ Query 7: Correcto
 
-⏱ Tiempo: 0.53 ms
-✅ Se usó índice(s) en la consulta: PRIMARY,id_asignatura,id_curso_escolar, PRIMARY, PRIMARY,nif
+⏱ Tiempo: 0.51 ms
+✅ Se usó índice(s) en la consulta: PRIMARY, PRIMARY,id_asignatura,id_curso_escolar, PRIMARY,nif
 
 ---
 
 ## ✅ Query 8: Correcto
 
-⏱ Tiempo: 0.40 ms
-✅ Se usó índice(s) en la consulta: id_profesor,id_grado, PRIMARY, PRIMARY,id_departamento
+⏱ Tiempo: 0.42 ms
+✅ Se usó índice(s) en la consulta: PRIMARY, id_profesor,id_grado, PRIMARY,id_departamento
 
 ---
 
 ## ✅ Query 9: Correcto
 
-⏱ Tiempo: 0.36 ms
-✅ Se usó índice(s) en la consulta: PRIMARY,id_curso_escolar, PRIMARY
+⏱ Tiempo: 0.35 ms
+✅ Se usó índice(s) en la consulta: PRIMARY, PRIMARY,id_curso_escolar
 
 ---
 
