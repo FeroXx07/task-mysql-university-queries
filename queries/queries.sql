@@ -99,13 +99,46 @@ WHERE ce.anyo_inicio = 2018 AND ce.anyo_fin = 2019;
 
 -- Resol les 6 següents consultes utilitzant les clàusules LEFT JOIN i RIGHT JOIN.
 -- 10. Retorna un llistat amb els noms de tots els professors/es i els departaments que tenen vinculats. El llistat també ha de mostrar aquells professors/es que no tenen cap departament associat. El llistat ha de retornar quatre columnes, nom del departament, primer cognom, segon cognom i nom del professor/a. El resultat estarà ordenat alfabèticament de menor a major pel nom del departament, cognoms i el nom. (departamento, apellido1, apellido2, nombre)
-
+SELECT 
+	de.nombre as 'departamento',
+	pe.apellido1,
+    pe.apellido2,
+    pe.nombre
+FROM persona as pe
+JOIN profesor as po 
+	ON (pe.id = po.id_profesor)
+LEFT JOIN departamento as de 
+	ON (de.id = po.id_departamento)
+ORDER BY 
+	de.nombre ASC, 
+    pe.apellido1 ASC, 
+    pe.apellido2 ASC, 
+    pe.nombre ASC;
 
 -- 11. Retorna un llistat amb els professors/es que no estan associats a un departament. (apellido1, apellido2, nombre)
-
+SELECT 
+	pe.apellido1,
+    pe.apellido2,
+    pe.nombre
+FROM persona as pe
+JOIN profesor as po 
+	ON (pe.id = po.id_profesor)
+LEFT JOIN departamento as de 
+	ON (de.id = po.id_departamento)
+WHERE de.id IS NULL
+ORDER BY 
+	de.nombre ASC, 
+    pe.apellido1 ASC, 
+    pe.apellido2 ASC, 
+    pe.nombre ASC;
 
 -- 12. Retorna un llistat amb els departaments que no tenen professors/es associats. (nombre)
-
+SELECT 
+    de.nombre
+FROM departamento as de 
+LEFT JOIN profesor as po 
+	ON (de.id = po.id_departamento)
+WHERE po.id_profesor IS NULL;
 
 -- 13. Retorna un llistat amb els professors/es que no imparteixen cap assignatura. (apellido1, apellido2, nombre)
 
