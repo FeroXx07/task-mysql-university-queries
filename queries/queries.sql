@@ -61,7 +61,7 @@ SELECT
 	pe.apellido1,
     pe.apellido2,
     pe.nombre,
-    de.nombre
+    de.nombre as 'departamento'
 FROM persona as pe
 INNER JOIN profesor as po ON (pe.id = po.id_profesor)
 INNER JOIN departamento as de ON (de.id = po.id_departamento)
