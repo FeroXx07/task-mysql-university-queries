@@ -161,7 +161,18 @@ FROM asignatura as ag
 WHERE ag.id_profesor IS NULL;
 
 -- 15. Retorna un llistat amb tots els departaments que no han impartit assignatures en cap curs escolar. (nombre)
-
+SELECT DISTINCT
+	de.nombre
+FROM departamento as de
+LEFT JOIN profesor as po
+	ON (de.id = po.id_departamento)
+LEFT JOIN asignatura as ag
+	ON (po.id_profesor = ag.id_profesor)
+LEFT JOIN alumno_se_matricula_asignatura as ama
+	ON (ag.id = ama.id_asignatura)
+LEFT JOIN curso_escolar as ce
+	ON (ama.id_curso_escolar = ce.id)
+WHERE ce.id IS NULL;
 
 -- 16. Retorna el nombre total d'alumnes que hi ha. (total)
 
