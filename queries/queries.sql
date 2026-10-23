@@ -1,18 +1,27 @@
 -- 1. Retorna un llistat amb el primer cognom, segon cognom i el nom de tots els/les alumnes. El llistat haurà d'estar ordenat alfabèticament de menor a major pel primer cognom, segon cognom i nom.
-SELECT
+SELECT DISTINCT
 	pe.apellido1,
     pe.apellido2,
     pe.nombre
 FROM persona as pe
+LEFT JOIN profesor as pr
+    ON pe.id = pr.id_profesor
+WHERE pr.id_profesor IS NULL
 ORDER BY pe.apellido1 ASC, pe.apellido2 ASC, pe.nombre ASC;
 
 -- 2. Esbrina el nom i els dos cognoms dels alumnes que no han donat d'alta el seu número de telèfon en la base de dades. (nombre, apellido1, apellido2)
-SELECT
+SELECT 
 	pe.apellido1,
     pe.apellido2,
     pe.nombre
-FROM persona as pe
-WHERE pe.telefono IS NULL;
+FROM persona pe
+WHERE NOT EXISTS ( # row does not exist in subquery
+    SELECT 1 # since we dont need any data, 1 placholder
+    FROM profesor pr
+    WHERE pr.id_profesor = pe.id
+) 
+AND pe.telefono IS NULL
+ORDER BY pe.apellido1 ASC, pe.apellido2 ASC, pe.nombre ASC;
 
 -- 3. Retorna el llistat dels alumnes que van néixer en 1999. (id, nombre, apellido1, apellido2, fecha_nacimiento)
 SELECT
