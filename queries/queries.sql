@@ -35,13 +35,14 @@ WHERE YEAR(pe.fecha_nacimiento) = 1999;
 
 -- 4. Retorna el llistat de professors/es que no han donat d'alta el seu número de telèfon en la base de dades i a més el seu NIF acaba en K. (nombre, apellido1, apellido2, nif)
 SELECT
-	pe.id,
 	pe.nombre,
 	pe.apellido1,
     pe.apellido2,
-    pe.fecha_nacimiento
-FROM persona as pe
-WHERE YEAR(pe.fecha_nacimiento) = 1999;
+    pe.NIF
+FROM profesor as po
+JOIN persona as pe
+	ON (po.id_profesor = pe.id)
+WHERE pe.telefono IS NULL AND pe.NIF REGEXP '[k]$';
 
 -- 5. Retorna el llistat de les assignatures que s'imparteixen en el primer quadrimestre, en el tercer curs del grau que té l'identificador 7. (id, nombre, cuatrimestre, curso, id_grado)
 SELECT
